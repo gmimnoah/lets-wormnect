@@ -1,5 +1,6 @@
 import WormholeBridge, { Theme, OPACITY, WormholeConnectConfig } from '@wormhole-foundation/wormhole-connect';
 import { grey, green, orange, red, pink } from '@mui/material/colors';
+import './App.css';
 
 const customized: Theme = {
   primary: grey,
@@ -17,16 +18,16 @@ const customized: Theme = {
   success: green, // color of success divs
   warning: orange, // color of warning divs
   button: { // colors for all the buttons
-    primary: '#ffffff' + OPACITY[10], // default button background color 
-    primaryText: '#ffffff', // default button text color
-    disabled: '#ffffff' + OPACITY[7], // disabled ... bcolor
+    primary: '#ffffff' + OPACITY[10],//'#ff5cec', // default button background color 
+    primaryText: '#ffffff' + OPACITY[40], // default button text color
+    disabled: '#ffffff', // disabled ... bcolor
     disabledText: '#ffffff' + OPACITY[40], // disabled ... color
-    action: '#ffffff', // clicked ... color
-    actionText: '#000000', // clicked ... color
+    action: '#5981f3', // ready to be clicked ... color
+    actionText: '#ffffff', // ready to be clicked ... color
     hover: '#ffffff' + OPACITY[7], // hovered ... color
   },
   options: { // colors for anything that involves choosing from options of things
-    hover: '#5981f3', // for hovering over the options under 'Gas payment'
+    hover: '#ffffff'+ OPACITY[10], // for hovering over the options under 'Gas payment'
     select: '#191d28' // for hovering over any option in a pop-up modal
   },
   card: { // colors and float for the bodies under each 'From' and 'To' section
@@ -43,8 +44,8 @@ const customized: Theme = {
     background: 'transparent',
   },
   font: { // font families across the widget for header and body 
-    primary: '"Inter", sans-serif',
-    header: '"IBM Plex Mono", monospace',
+    primary: '"Inter custom", sans-serif',
+    header: '"Inter custom", sans-serif',
   },
 };
 
