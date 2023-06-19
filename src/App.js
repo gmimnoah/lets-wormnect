@@ -1,6 +1,5 @@
 import WormholeBridge, { Theme, OPACITY, WormholeConnectConfig } from '@wormhole-foundation/wormhole-connect';
 import { grey, green, orange, red, pink } from '@mui/material/colors';
-import './App.css';
 
 const customized: Theme = {
   primary: grey,
