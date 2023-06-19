@@ -2,6 +2,8 @@ import WormholeBridge, { Theme, OPACITY, WormholeConnectConfig } from '@wormhole
 import { grey, green, orange, red, pink } from '@mui/material/colors';
 import { Allotment } from "allotment";
 import styled from "@emotion/styled";
+import React, { useEffect } from "react";
+import CodeEditor, { SelectionText } from "@uiw/react-textarea-code-editor";
 
 const customized: Theme = {
   primary: grey,
@@ -52,20 +54,44 @@ const customized: Theme = {
 
 const config: WormholeConnectConfig = {
   customTheme: customized,
-}
+};
 
-const WHCConfig = () => (
-  <Code>
-    bing bong
-  </Code>
-);
 
+const WHCConfig = () => {
+  const [code, setCode] = React.useState(
+    `function hello(bing) {\n  return "bong";\n}`
+  );
+
+  // TODO: turn this into a react Component and cause render updates
+  return (
+    <CodeEditor
+      value={code}
+      language="js"
+      placeholder="Please enter JS code."
+      onChange={(evn) => {
+        console.log(evn); // TODO: need to write code here to stop code from changing if something is being changed illegally
+        // setCode(evn.target.value)
+        setCode(code);
+      }}
+      padding={15}
+      style={{
+        fontSize: 15,
+        backgroundColor: "#1e1e1e",
+        fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
+      }}
+    />
+  );
+};
+
+// TODO: turn this into a react Component and cause render updates
 function ConfigHover() {
   return (
     <Container>
       <Allotment numViews={2}>
         <Allotment.Pane>
-          <WHCConfig /> 
+          <Code>
+            <WHCConfig />
+          </Code>
         </Allotment.Pane>
         <Allotment.Pane>
           <Widget>
@@ -85,12 +111,14 @@ const Code = styled.div`
   height: 100%;
   width: 100%;
   overflow: auto;
+  background-color: #1e1e1e;
 `;
 
 const Widget = styled.div`
   height: 100%;
   width: 100%;
   overflow: auto;
+  padding: 0px 0px 0px 5px;
 `;
 
 export default ConfigHover;
