@@ -52,10 +52,10 @@ const config: WormholeConnectConfig = {
   customTheme: customized,
 }
 
-function App() {
+function Uniswap() {
   return (
     <WormholeBridge config={config} />
   );
 }
 
-export default App;
+export default Uniswap;
