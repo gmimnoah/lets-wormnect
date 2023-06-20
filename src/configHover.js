@@ -2,8 +2,13 @@ import WormholeBridge, { Theme, OPACITY, WormholeConnectConfig } from '@wormhole
 import { grey, green, orange, red, pink } from '@mui/material/colors';
 import { Allotment } from "allotment";
 import styled from "@emotion/styled";
-import React, { useEffect } from "react";
+import React, { useEffect, Component } from "react";
 import CodeEditor, { SelectionText } from "@uiw/react-textarea-code-editor";
+import Editor from 'react-simple-code-editor';
+import { highlight, languages } from 'prismjs/components/prism-core';
+import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/themes/prism.css'; //Example style, you can use another
 
 const customized: Theme = {
   primary: grey,
@@ -57,33 +62,41 @@ const config: WormholeConnectConfig = {
 };
 
 
-const WHCConfig = () => {
-  const [code, setCode] = React.useState(
-    `function hello(bing) {\n  return "bong";\n}`
-  );
+class WHCConfig extends Component {
+  state = {
+    code: `function hello(bing) {\n  return "bong";\n}`
+  }
 
-  // TODO: turn this into a react Component and cause render updates
-  return (
-    <CodeEditor
-      value={code}
-      language="js"
-      placeholder="Please enter JS code."
-      onChange={(evn) => {
-        console.log(evn); // TODO: need to write code here to stop code from changing if something is being changed illegally
-        // setCode(evn.target.value)
-        setCode(code);
-      }}
-      padding={15}
-      style={{
-        fontSize: 15,
-        backgroundColor: "#1e1e1e",
-        fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
-      }}
-    />
-  );
-};
+  handleChange = (f) => {
+    // this.setState({
+    //   code: `function hello(bing) {\n  return "bong";\n}`
+    // });
+    this.setState({
+      code: f
+    });
 
-// TODO: turn this into a react Component and cause render updates
+  }
+  // const [code, setCode] = React.useState(
+  //   `function hello(bing) {\n  return "bong";\n}`
+  // );
+
+  render() {
+    return (
+      <Editor
+        value={this.state.code}
+        onValueChange={this.handleChange}
+        highlight={code => highlight(code, languages.js)}
+        padding={15}
+        style={{
+          fontSize: 15,
+          backgroundColor: "white",
+          fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
+        }}
+      />
+    );
+  }
+}
+
 function ConfigHover() {
   return (
     <Container>
@@ -111,7 +124,7 @@ const Code = styled.div`
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: #1e1e1e;
+  background-color: white;
 `;
 
 const Widget = styled.div`
