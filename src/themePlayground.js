@@ -97,7 +97,7 @@ class WHCConfig extends Component {
   }
 }
 
-function ConfigHover() {
+function ThemePlayground() {
   return (
     <Container>
       <Allotment numViews={2}>
@@ -134,4 +134,4 @@ const Widget = styled.div`
   padding: 0px 0px 0px 5px;
 `;
 
-export default ConfigHover;
+export default ThemePlayground;

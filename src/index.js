@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import './index.css';
 import Uniswap from "./uniswap";
-import ConfigHover from "./configHover";
+import ThemePlayground from "./themePlayground";
 import reportWebVitals from './reportWebVitals';
 import "allotment/dist/style.css";
 
@@ -20,8 +20,8 @@ const router = createBrowserRouter([
     element: <Uniswap />
   },
   {
-    path: "/config-hover",
-    element: <ConfigHover />
+    path: "/theme-playground",
+    element: <ThemePlayground />
   }
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
