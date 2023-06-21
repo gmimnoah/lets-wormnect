@@ -2,8 +2,7 @@ import WormholeBridge, { Theme, OPACITY, WormholeConnectConfig } from '@wormhole
 import { grey, green, orange, red, pink } from '@mui/material/colors';
 import { Allotment } from "allotment";
 import styled from "@emotion/styled";
-import React, { useEffect, Component } from "react";
-import CodeEditor, { SelectionText } from "@uiw/react-textarea-code-editor";
+import React, { Component } from "react";
 import Editor from 'react-simple-code-editor';
 import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-clike';
@@ -68,17 +67,18 @@ class WHCConfig extends Component {
   }
 
   handleChange = (f) => {
-    // this.setState({
-    //   code: `function hello(bing) {\n  return "bong";\n}`
-    // });
-    this.setState({
-      code: f
-    });
-
+    const n = f.search(/^(?:function hello\(bing\) {\n\s\sreturn ")(.*)(?:";\n})$/gm);
+    
+    if (n === 0) {
+      this.setState({
+        code: f
+      });
+    } else if (n === -1) {
+      this.setState({
+        code: this.state.code 
+      });
+    }
   }
-  // const [code, setCode] = React.useState(
-  //   `function hello(bing) {\n  return "bong";\n}`
-  // );
 
   render() {
     return (
