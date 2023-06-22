@@ -1,6 +1,11 @@
 # lets-wormnect
 let's see what you can do with wormhole connect
 
+## how to run
+`npm install`
+
+`npm start dev`
+
 ## notes on custom themes
 
 ### colors

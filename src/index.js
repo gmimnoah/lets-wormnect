@@ -13,7 +13,7 @@ import "allotment/dist/style.css";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <div><a href="/uniswap">uniswap</a> | coming soon...</div>,
   },
   {
     path: "/uniswap",
